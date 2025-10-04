@@ -1,6 +1,6 @@
 import { beforeAll, afterAll, beforeEach, afterEach } from '@jest/globals';
-import { connectDatabase, closeDatabase } from '../src/config/database';
-import { connectRedis, closeRedis } from '../src/config/redis';
+import { connectDatabase, getDatabase } from '../src/config/database';
+import { connectRedis, getRedis } from '../src/config/redis';
 
 // 测试数据库配置
 process.env.NODE_ENV = 'test';
@@ -15,8 +15,10 @@ beforeAll(async () => {
 
 afterAll(async () => {
   // 关闭数据库连接
-  await closeDatabase();
-  await closeRedis();
+  const db = getDatabase();
+  const redis = getRedis();
+  await db.end();
+  await redis.quit();
 });
 
 beforeEach(async () => {
