@@ -1,0 +1,85 @@
+{
+  "test_plan": {
+    "unit_tests": [
+      {
+        "module": "秒杀服务",
+        "test_cases": [
+          "测试秒杀活动创建逻辑",
+          "测试秒杀库存扣减",
+          "测试秒杀参与限制"
+        ]
+      },
+      {
+        "module": "拼团服务",
+        "test_cases": [
+          "测试拼团活动创建逻辑",
+          "测试拼团小组创建",
+          "测试拼团成员加入"
+        ]
+      },
+      {
+        "module": "砍价服务",
+        "test_cases": [
+          "测试砍价活动创建逻辑",
+          "测试砍价记录创建",
+          "测试砍价金额计算"
+        ]
+      }
+    ],
+    "integration_tests": [
+      {
+        "name": "秒杀流程测试",
+        "steps": [
+          "创建秒杀活动",
+          "查询活动列表",
+          "参与秒杀活动",
+          "验证库存变化"
+        ]
+      },
+      {
+        "name": "拼团流程测试",
+        "steps": [
+          "创建拼团活动",
+          "发起拼团",
+          "加入拼团",
+          "验证拼团状态"
+        ]
+      },
+      {
+        "name": "砍价流程测试",
+        "steps": [
+          "创建砍价活动",
+          "发起砍价",
+          "好友帮助砍价",
+          "验证砍价金额"
+        ]
+      }
+    ],
+    "performance_tests": [
+      {
+        "name": "秒杀高并发测试",
+        "target": "POST /seckill/{id}/participate",
+        "concurrency": 1000
+      },
+      {
+        "name": "拼团接口压力测试",
+        "target": "POST /groupBuy/group/{groupId}/join",
+        "concurrency": 500
+      }
+    ],
+    "security_tests": [
+      {
+        "name": "认证接口测试",
+        "targets": [
+          "所有需要认证的接口"
+        ]
+      },
+      {
+        "name": "权限控制测试",
+        "targets": [
+          "管理员专属接口"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "project_name": "H5电商平台后端",
+  "version": "1.0.0",
+  "description": "基于Node.js的电商平台后端服务，提供秒杀、拼团、砍价等营销功能",
+  "tech_stack": {
+    "backend": ["Node.js", "Express", "TypeScript"],
+    "database": ["MySQL"],
+    "cache": ["Redis"],
+    "authentication": ["JWT"],
+    "logging": ["Winston"]
+  },
+  "features": [
+    {
+      "name": "秒杀系统",
+      "description": "限时秒杀活动功能",
+      "requirements": [
+        "支持创建秒杀活动",
+        "支持用户参与秒杀",
+        "支持活动列表查询",
+        "支持活动详情查询"
+      ],
+      "api_endpoints": [
+        "GET /seckill/list",
+        "GET /seckill/{id}",
+        "POST /seckill/{id}/participate"
+      ]
+    },
+    {
+      "name": "拼团系统",
+      "description": "多人拼团功能",
+      "requirements": [
+        "支持创建拼团活动",
+        "支持用户发起拼团",
+        "支持加入已有拼团",
+        "支持拼团详情查询"
+      ],
+      "api_endpoints": [
+        "GET /groupBuy/list",
+        "GET /groupBuy/{id}",
+        "GET /groupBuy/group/{groupId}",
+        "POST /groupBuy/{id}/start",
+        "POST /groupBuy/group/{groupId}/join"
+      ]
+    },
+    {
+      "name": "砍价系统",
+      "description": "好友砍价功能",
+      "requirements": [
+        "支持创建砍价活动",
+        "支持用户发起砍价",
+        "支持好友帮助砍价",
+        "支持砍价记录查询"
+      ],
+      "api_endpoints": [
+        "GET /bargain/list",
+        "GET /bargain/{id}",
+        "GET /bargain/record/{recordId}",
+        "POST /bargain/{id}/start",
+        "POST /bargain/record/{recordId}/help"
+      ]
+    }
+  ],
+  "non_functional_requirements": {
+    "performance": "支持1000+并发请求",
+    "security": "JWT认证，接口权限控制",
+    "availability": "99.9%",
+    "scalability": "支持水平扩展"
+  }
+}
