@@ -23,7 +23,16 @@ export default {
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov', 'html'],
   setupFilesAfterEnv: ['<rootDir>/tests/setup.ts'],
-  moduleNameMapping: {
+  moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1'
-  }
+  },
+  transform: {
+    '^.+\\.(ts|tsx)$': [
+      'ts-jest',
+      {
+        useESM: true
+      }
+    ]
+  },
+  globals: {}
 };

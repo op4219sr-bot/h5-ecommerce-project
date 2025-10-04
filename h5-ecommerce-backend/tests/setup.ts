@@ -1,6 +1,6 @@
 import { beforeAll, afterAll, beforeEach, afterEach } from '@jest/globals';
-import { initDatabase, closeDatabase } from '../src/config/database.js';
-import { initRedis, closeRedis } from '../src/config/redis.js';
+import { connectDatabase, closeDatabase } from '../src/config/database';
+import { connectRedis, closeRedis } from '../src/config/redis';
 
 // 测试数据库配置
 process.env.NODE_ENV = 'test';
@@ -9,8 +9,8 @@ process.env.REDIS_DB = '1';
 
 beforeAll(async () => {
   // 初始化测试数据库连接
-  await initDatabase();
-  await initRedis();
+  await connectDatabase();
+  await connectRedis();
 });
 
 afterAll(async () => {
